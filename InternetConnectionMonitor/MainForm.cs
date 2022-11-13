@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Runtime;
 using System.Runtime.InteropServices;
 using System.Windows.Forms.VisualStyles;
+using System.Net.NetworkInformation;  
 
 namespace InternetConnectionMonitor
 {
@@ -22,13 +23,16 @@ namespace InternetConnectionMonitor
 	public partial class MainForm : Form
 	{
 		bool isClosing = false;
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 		
-		[DllImport("wininet.dll")]
-		private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
+		//[DllImport("wininet.dll")]
+		//private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
 		
 		public MainForm()
 		{
 			InitializeComponent();
+			
+			notify.Icon = ((Icon)(resources.GetObject("connected")));
 		}
 		
 		private void MainForm_Load(object sender, EventArgs e)
@@ -43,22 +47,20 @@ namespace InternetConnectionMonitor
 		
 		void checkInternet()
 		{
-			int Desc;
+			//int Desc;
+			//bool connected;
+			//connected = InternetGetConnectedState(out Desc, 0);
 			
-			bool connected;
-
-			connected = InternetGetConnectedState(out Desc, 0);
-			
-			if (connected) {
+			if (isConnected()) {
 				lblStatus.Text = "Connected";
-				lblStatus.ForeColor = System.Drawing.Color.Green;
-				notifyConnected.Visible = true;
-				notifyDisconnected.Visible = false;
+				lblStatus.ForeColor = Color.Green;
+				notify.Icon = ((Icon)(resources.GetObject("connected")));
+				notify.BalloonTipIcon = ToolTipIcon.Info;
 			} else {
 				lblStatus.Text = "Disconnected";
-				lblStatus.ForeColor = System.Drawing.Color.Red;
-				notifyDisconnected.Visible = true;
-				notifyConnected.Visible = false;
+				lblStatus.ForeColor = Color.Red;
+				notify.Icon = ((Icon)(resources.GetObject("disconnected")));
+				notify.BalloonTipIcon = ToolTipIcon.Error;
 			}
 		}
 		
@@ -70,19 +72,13 @@ namespace InternetConnectionMonitor
 			}  
 		}
 		
-		void NotifyConnectedMouseDoubleClick(object sender, MouseEventArgs e)
+		void NotifyMouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			Show();
 			WindowState = FormWindowState.Normal;
 			ShowInTaskbar = true;
 		}
 		
-		void NotifyDisconnectedMouseDoubleClick(object sender, MouseEventArgs e)
-		{
-			Show();
-			WindowState = FormWindowState.Normal;
-			ShowInTaskbar = true;
-		}
 		
 		void MainFormFormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -100,6 +96,24 @@ namespace InternetConnectionMonitor
 			Application.Exit();
 		}
 		
+		bool isConnected()
+		{
+			try { 
+				Ping myPing = new Ping();
+				
+				String host = "google.com";
+				
+				byte[] buffer = new byte[32];
+				int timeout = 5000;
+				
+				PingOptions pingOptions = new PingOptions();
+				PingReply reply = myPing.Send(host, timeout, buffer, pingOptions);
+				
+				return (reply.Status == IPStatus.Success);
+			} catch (Exception) {
+				return false;
+			}			
+		}
 		
 	}
 }

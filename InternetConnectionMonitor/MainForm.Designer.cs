@@ -16,8 +16,7 @@ namespace InternetConnectionMonitor
 		private System.ComponentModel.IContainer components = null;
 		private System.Windows.Forms.Label lblStatus;
 		private System.Windows.Forms.Timer timer1;
-		private System.Windows.Forms.NotifyIcon notifyConnected;
-		private System.Windows.Forms.NotifyIcon notifyDisconnected;
+		private System.Windows.Forms.NotifyIcon notify;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
 
@@ -42,10 +41,9 @@ namespace InternetConnectionMonitor
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.lblStatus = new System.Windows.Forms.Label();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.notifyConnected = new System.Windows.Forms.NotifyIcon(this.components);
+			this.notify = new System.Windows.Forms.NotifyIcon(this.components);
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.notifyDisconnected = new System.Windows.Forms.NotifyIcon(this.components);
 			this.contextMenuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -62,18 +60,18 @@ namespace InternetConnectionMonitor
 			// timer1
 			// 
 			this.timer1.Enabled = true;
-			this.timer1.Interval = 1000;
+			this.timer1.Interval = 3000;
 			this.timer1.Tick += new System.EventHandler(this.Timer1Tick);
 			// 
-			// notifyConnected
+			// notify
 			// 
-			this.notifyConnected.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-			this.notifyConnected.BalloonTipText = "CONNECTED!";
-			this.notifyConnected.BalloonTipTitle = "Internet Connection Monitor";
-			this.notifyConnected.ContextMenuStrip = this.contextMenuStrip1;
-			this.notifyConnected.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyConnected.Icon")));
-			this.notifyConnected.Text = "Internet Connection Monitor";
-			this.notifyConnected.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyConnectedMouseDoubleClick);
+			this.notify.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			this.notify.BalloonTipText = "Internet Connection Monitor";
+			this.notify.BalloonTipTitle = "Internet Connection Monitor";
+			this.notify.ContextMenuStrip = this.contextMenuStrip1;
+			this.notify.Text = "Internet Connection Monitor";
+			this.notify.Visible = true;
+			this.notify.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyMouseDoubleClick);
 			// 
 			// contextMenuStrip1
 			// 
@@ -88,16 +86,6 @@ namespace InternetConnectionMonitor
 			this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
-			// 
-			// notifyDisconnected
-			// 
-			this.notifyDisconnected.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Error;
-			this.notifyDisconnected.BalloonTipText = "DISCONNECTED!";
-			this.notifyDisconnected.BalloonTipTitle = "Internet Connection Monitor";
-			this.notifyDisconnected.ContextMenuStrip = this.contextMenuStrip1;
-			this.notifyDisconnected.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyDisconnected.Icon")));
-			this.notifyDisconnected.Text = "Internet Connection Monitor";
-			this.notifyDisconnected.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyDisconnectedMouseDoubleClick);
 			// 
 			// MainForm
 			// 
