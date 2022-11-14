@@ -7,7 +7,6 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -18,8 +17,6 @@ namespace InternetConnectionMonitor
 	/// </summary>
 	public partial class Options : Form
 	{
-		RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\InternetConnectionMonitor");
-		
 		public Options()
 		{
 			InitializeComponent();
@@ -45,6 +42,8 @@ namespace InternetConnectionMonitor
 		
 		void BtnSaveClick(object sender, EventArgs e)
 		{
+			RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\InternetConnectionMonitor");
+			
 			key.SetValue("url", txtURL.Text.Length > 5 ? txtURL.Text : "google.com");
 			key.SetValue("interval", txtInterval.Text.Length > 0 ? txtInterval.Text : "5");
 			key.Close();
@@ -54,9 +53,12 @@ namespace InternetConnectionMonitor
 		
 		void OptionsLoad(object sender, EventArgs e)
 		{
+			RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\InternetConnectionMonitor");
+			
 			if (key != null) {
 				txtURL.Text = key.GetValue("url").ToString();
 				txtInterval.Text = key.GetValue("interval").ToString();
+				key.Close();
 			}
 		}
 	}

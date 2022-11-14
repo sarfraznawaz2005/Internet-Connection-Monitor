@@ -21,9 +21,9 @@ namespace InternetConnectionMonitor
 	public partial class MainForm : Form
 	{
 		bool isClosing = false;
-		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+		string host = "google.com";
 		
-		RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\InternetConnectionMonitor");
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 		
 		//[DllImport("wininet.dll")]
 		//private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
@@ -32,15 +32,21 @@ namespace InternetConnectionMonitor
 		{
 			InitializeComponent();
 			
-			notify.Icon = ((Icon)(resources.GetObject("connected")));
+			notify.Icon = ((Icon)(resources.GetObject("disconnected")));
+			
+			RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\InternetConnectionMonitor");
+			
+			if (key != null) {
+				timer1.Interval = int.Parse(key.GetValue("interval").ToString()) * 1000;
+				
+				host = key.GetValue("url").ToString();
+				
+				key.Close();
+			}
 		}
 		
-		private void MainForm_Load(object sender, EventArgs e)
+		void MainForm_Load(object sender, EventArgs e)
 		{
-			if (key != null) {
-				timer1.Interval = int.Parse(key.GetValue("interval").ToString());
-			}
-			
 			checkInternet();
 		}
 		
@@ -102,12 +108,6 @@ namespace InternetConnectionMonitor
 		
 		bool isConnected()
 		{
-			String host = "google.com";
-			
-			if (key != null) {
-				host = key.GetValue("url").ToString();
-			}
-			
 			try { 
 				Ping myPing = new Ping();
 				
