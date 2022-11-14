@@ -12,9 +12,6 @@ using Microsoft.Win32;
 
 namespace InternetConnectionMonitor
 {
-	/// <summary>
-	/// Description of Options.
-	/// </summary>
 	public partial class Options : Form
 	{
 		public Options()
@@ -25,7 +22,7 @@ namespace InternetConnectionMonitor
 		void TxtIntervalKeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-			 (e.KeyChar != '.')) {
+			    (e.KeyChar != '.')) {
 				e.Handled = true;
 			}
 
@@ -44,7 +41,7 @@ namespace InternetConnectionMonitor
 		{
 			RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\InternetConnectionMonitor");
 			
-			key.SetValue("url", txtURL.Text.Length > 5 ? txtURL.Text : "google.com");
+			key.SetValue("url", txtURL.Text.Length > 4 ? txtURL.Text : "google.com");
 			key.SetValue("interval", txtInterval.Text.Length > 0 ? txtInterval.Text : "5");
 			key.Close();
 			
@@ -56,8 +53,9 @@ namespace InternetConnectionMonitor
 			RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\InternetConnectionMonitor");
 			
 			if (key != null) {
-				txtURL.Text = key.GetValue("url").ToString();
-				txtInterval.Text = key.GetValue("interval").ToString();
+				txtURL.Text = key.GetValue("url") != null ? key.GetValue("url").ToString() : "google.com";
+				txtInterval.Text = key.GetValue("interval") != null ? key.GetValue("interval").ToString() : "5";
+
 				key.Close();
 			}
 		}

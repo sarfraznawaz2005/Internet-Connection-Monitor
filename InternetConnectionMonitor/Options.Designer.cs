@@ -86,7 +86,7 @@ namespace InternetConnectionMonitor
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(111, 89);
+			this.btnClose.Location = new System.Drawing.Point(111, 90);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(75, 23);
 			this.btnClose.TabIndex = 3;
@@ -96,7 +96,7 @@ namespace InternetConnectionMonitor
 			// 
 			// btnSave
 			// 
-			this.btnSave.Location = new System.Drawing.Point(192, 89);
+			this.btnSave.Location = new System.Drawing.Point(192, 90);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(75, 23);
 			this.btnSave.TabIndex = 4;
@@ -108,7 +108,7 @@ namespace InternetConnectionMonitor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(373, 121);
+			this.ClientSize = new System.Drawing.Size(373, 122);
 			this.Controls.Add(this.btnSave);
 			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.txtInterval);

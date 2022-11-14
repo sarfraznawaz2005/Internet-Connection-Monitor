@@ -10,7 +10,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.Net.NetworkInformation;  
+using System.Net.NetworkInformation;
 using Microsoft.Win32;
 
 namespace InternetConnectionMonitor
@@ -37,10 +37,10 @@ namespace InternetConnectionMonitor
 			RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\InternetConnectionMonitor");
 			
 			if (key != null) {
-				timer1.Interval = int.Parse(key.GetValue("interval").ToString()) * 1000;
+				timer1.Interval = key.GetValue("interval") != null ? int.Parse(key.GetValue("interval").ToString()) * 1000 : 5000;
 				
-				host = key.GetValue("url").ToString();
-				
+				host = key.GetValue("url") != null ? key.GetValue("url").ToString() : "google.com";
+					
 				key.Close();
 			}
 		}
@@ -65,12 +65,10 @@ namespace InternetConnectionMonitor
 				lblStatus.Text = "Connected";
 				lblStatus.ForeColor = Color.Green;
 				notify.Icon = ((Icon)(resources.GetObject("connected")));
-				notify.BalloonTipIcon = ToolTipIcon.Info;
 			} else {
 				lblStatus.Text = "Disconnected";
 				lblStatus.ForeColor = Color.Red;
 				notify.Icon = ((Icon)(resources.GetObject("disconnected")));
-				notify.BalloonTipIcon = ToolTipIcon.Error;
 			}
 		}
 		
