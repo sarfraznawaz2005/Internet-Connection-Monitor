@@ -1,5 +1,5 @@
-E:\Documents\Documents\SharpDevelop Projects\InternetConnectionMonitor\InternetConnectionMonitor\bin\Release\InternetConnectionMonitor.exe.config
 E:\Documents\Documents\SharpDevelop Projects\InternetConnectionMonitor\InternetConnectionMonitor\bin\Release\InternetConnectionMonitor.exe
+E:\Documents\Documents\SharpDevelop Projects\InternetConnectionMonitor\InternetConnectionMonitor\bin\Release\InternetConnectionMonitor.exe.config
 E:\Documents\Documents\SharpDevelop Projects\InternetConnectionMonitor\InternetConnectionMonitor\obj\Release\InternetConnectionMonitor.csprojResolveAssemblyReference.cache
 E:\Documents\Documents\SharpDevelop Projects\InternetConnectionMonitor\InternetConnectionMonitor\obj\Release\InternetConnectionMonitor.MainForm.resources
 E:\Documents\Documents\SharpDevelop Projects\InternetConnectionMonitor\InternetConnectionMonitor\obj\Release\InternetConnectionMonitor.csproj.GenerateResource.Cache
