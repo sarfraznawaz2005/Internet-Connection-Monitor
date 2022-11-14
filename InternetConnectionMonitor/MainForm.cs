@@ -7,13 +7,11 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Runtime;
 using System.Runtime.InteropServices;
-using System.Windows.Forms.VisualStyles;
 using System.Net.NetworkInformation;  
+using Microsoft.Win32;
 
 namespace InternetConnectionMonitor
 {
@@ -24,6 +22,8 @@ namespace InternetConnectionMonitor
 	{
 		bool isClosing = false;
 		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+		
+		RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\InternetConnectionMonitor");
 		
 		//[DllImport("wininet.dll")]
 		//private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
@@ -37,6 +37,10 @@ namespace InternetConnectionMonitor
 		
 		private void MainForm_Load(object sender, EventArgs e)
 		{
+			if (key != null) {
+				timer1.Interval = int.Parse(key.GetValue("interval").ToString());
+			}
+			
 			checkInternet();
 		}
 		
@@ -98,10 +102,14 @@ namespace InternetConnectionMonitor
 		
 		bool isConnected()
 		{
+			String host = "google.com";
+			
+			if (key != null) {
+				host = key.GetValue("url").ToString();
+			}
+			
 			try { 
 				Ping myPing = new Ping();
-				
-				String host = "google.com";
 				
 				byte[] buffer = new byte[32];
 				int timeout = 5000;
@@ -113,6 +121,13 @@ namespace InternetConnectionMonitor
 			} catch (Exception) {
 				return false;
 			}			
+		}
+		
+		void SettingsToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			Options optionsForm = new Options();
+			
+			optionsForm.Show();
 		}
 		
 	}
