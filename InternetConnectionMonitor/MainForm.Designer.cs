@@ -50,6 +50,7 @@ namespace InternetConnectionMonitor
 			// lblStatus
 			// 
 			this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblStatus.ForeColor = System.Drawing.Color.Red;
 			this.lblStatus.Location = new System.Drawing.Point(12, 9);
 			this.lblStatus.Name = "lblStatus";
 			this.lblStatus.Size = new System.Drawing.Size(327, 44);
