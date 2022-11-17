@@ -5,3 +5,10 @@ E:\Documents\Documents\SharpDevelop Projects\InternetConnectionMonitor\InternetC
 E:\Documents\Documents\SharpDevelop Projects\InternetConnectionMonitor\InternetConnectionMonitor\obj\Release\InternetConnectionMonitor.Options.resources
 E:\Documents\Documents\SharpDevelop Projects\InternetConnectionMonitor\InternetConnectionMonitor\obj\Release\InternetConnectionMonitor.csproj.GenerateResource.Cache
 E:\Documents\Documents\SharpDevelop Projects\InternetConnectionMonitor\InternetConnectionMonitor\obj\Release\InternetConnectionMonitor.exe
+D:\SA\Documents\Downloads\code\dev\exe\Internet-Connection-Monitor\InternetConnectionMonitor\obj\Release\InternetConnectionMonitor.csprojResolveAssemblyReference.cache
+D:\SA\Documents\Downloads\code\dev\exe\Internet-Connection-Monitor\InternetConnectionMonitor\obj\Release\InternetConnectionMonitor.MainForm.resources
+D:\SA\Documents\Downloads\code\dev\exe\Internet-Connection-Monitor\InternetConnectionMonitor\obj\Release\InternetConnectionMonitor.Options.resources
+D:\SA\Documents\Downloads\code\dev\exe\Internet-Connection-Monitor\InternetConnectionMonitor\obj\Release\InternetConnectionMonitor.csproj.GenerateResource.Cache
+D:\SA\Documents\Downloads\code\dev\exe\Internet-Connection-Monitor\InternetConnectionMonitor\obj\Release\InternetConnectionMonitor.exe
+D:\SA\Documents\Downloads\code\dev\exe\Internet-Connection-Monitor\InternetConnectionMonitor\bin\Release\InternetConnectionMonitor.exe.config
+D:\SA\Documents\Downloads\code\dev\exe\Internet-Connection-Monitor\InternetConnectionMonitor\bin\Release\InternetConnectionMonitor.exe

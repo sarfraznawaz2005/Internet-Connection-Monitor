@@ -15,9 +15,6 @@ using Microsoft.Win32;
 
 namespace InternetConnectionMonitor
 {
-	/// <summary>
-	/// Description of MainForm.
-	/// </summary>
 	public partial class MainForm : Form
 	{
 		bool isClosing = false;
@@ -65,10 +62,12 @@ namespace InternetConnectionMonitor
 				lblStatus.Text = "Connected";
 				lblStatus.ForeColor = Color.Green;
 				notify.Icon = ((Icon)(resources.GetObject("connected")));
+				notify.Text = "Connected";
 			} else {
 				lblStatus.Text = "Disconnected";
 				lblStatus.ForeColor = Color.Red;
 				notify.Icon = ((Icon)(resources.GetObject("disconnected")));
+				notify.Text = "Disconnected";
 			}
 		}
 		
