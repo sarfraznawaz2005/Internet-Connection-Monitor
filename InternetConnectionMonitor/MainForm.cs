@@ -60,14 +60,14 @@ namespace InternetConnectionMonitor
 			
 			if (isConnected()) {
 				lblStatus.Text = "Connected";
-				lblStatus.ForeColor = Color.Green;
-				notify.Icon = ((Icon)(resources.GetObject("connected")));
 				notify.Text = "Connected";
+				notify.Icon = ((Icon)(resources.GetObject("connected")));
+				lblStatus.ForeColor = Color.Green;
 			} else {
 				lblStatus.Text = "Disconnected";
-				lblStatus.ForeColor = Color.Red;
-				notify.Icon = ((Icon)(resources.GetObject("disconnected")));
 				notify.Text = "Disconnected";
+				notify.Icon = ((Icon)(resources.GetObject("disconnected")));
+				lblStatus.ForeColor = Color.Red;
 			}
 		}
 		
